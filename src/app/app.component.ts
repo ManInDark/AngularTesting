@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { UserComponent } from './login.component';
 
 @Component({
   selector: "message",
@@ -55,14 +56,16 @@ export class HomeComponent {
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [RouterLink, RouterOutlet],
+  imports: [RouterLink, RouterOutlet, UserComponent],
   template: `
   <nav>
       <a routerLink="/">Root</a>
       <a routerLink="/second">Second</a>
       <a routerLink="/form">Form</a>
       <a routerLink="/todo">Todo</a>
+      <a routerLink="/login">Login</a>
   </nav>
+  <user-component></user-component>
   <router-outlet></router-outlet>
   `
 })

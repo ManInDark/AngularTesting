@@ -3,6 +3,7 @@ import { AppComponent } from './secondpage';
 import { HomeComponent } from './app.component';
 import { FormComponent } from './form.component';
 import { TodoComponent } from './todo.component';
+import { LoginComponent } from './login.component';
 
 export const routes: Routes = [{
     path: '',
@@ -20,4 +21,8 @@ export const routes: Routes = [{
     path: "todo",
     title: "Todo",
     component: TodoComponent
+}, {
+    path: "login",
+    title: "Login",
+    component: LoginComponent
 }];
