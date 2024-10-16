@@ -55,7 +55,7 @@ export class TodoComponent {
 })
 export class TodoListService {
     pocketbase = inject(PocketBaseService)
-    list: Array<string> = ["alpha", "beta", "gamma", "delta"]
+    list: Array<string> = []
     id: string = "";
     getList() { return this.list; }
     setList(list: Array<string>) { this.list = list; this.saveList(); }
@@ -74,9 +74,7 @@ export class TodoListService {
     setId(id: string) { this.id = id; }
     constructor() {
         let storedData = localStorage.getItem("todo");
-        if (storedData !== null) {
-            this.setList(JSON.parse(storedData));
-        }
+        this.setList(storedData !== null ? JSON.parse(storedData) : []);
         if (this.pocketbase.pb.authStore.isValid) {
             this.pocketbase.pb.collection("todo").getFullList().then((data: [{"entries": [], "id": string}]) => {
                 if (data.length > 0) {
