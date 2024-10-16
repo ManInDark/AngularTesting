@@ -1,19 +1,25 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { UserComponent } from './login.component';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { NavigationComponent } from "./navigation/component";
+import { UserComponent } from './user/component';
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [RouterLink, RouterOutlet, UserComponent],
+  imports: [RouterOutlet, UserComponent, NavigationComponent],
   template: `
-  <nav>
-      <a routerLink="/todo">Todo</a>
-      <a routerLink="/login">Login</a>
-  </nav>
+  <navigation [links]="links"></navigation>
   <user-component></user-component>
   <router-outlet></router-outlet>
-  `
+  `,
+  styles: `
+  navigation {
+    display: inline
+  }`
 })
 export class RootComponent {
+  links = [
+    { "name": "Todo", "path": "/todo" },
+    { "name": "Login", "path": "/login" }
+  ];
 }

@@ -1,0 +1,10 @@
+<div>
+    <button (click)="this.listservice.loadList()">Reload</button>
+    <ol>
+        @for (entry of listservice.getList(); track entry) {
+            <li>{{ entry | capitalize }}<button (click)="removeEntry(entry)">-</button></li>
+        }
+    </ol>
+    <input id="newentry" type="text" [(ngModel)]="newentry" />
+    <button style="width: 5vw;" (click)="addEntry()">+</button>
+</div>
