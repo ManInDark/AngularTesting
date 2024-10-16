@@ -1,17 +1,29 @@
 import { Component, inject, Injectable } from "@angular/core";
+import { LowerCasePipe } from '@angular/common';
 import { FormsModule } from "@angular/forms";
+import {Pipe, PipeTransform} from '@angular/core';
 
 // https://angular.dev/tutorials/learn-angular/17-reactive-forms könnte man hier noch anwenden, hab ich aber nicht gemacht
 // https://angular.dev/tutorials/learn-angular/18-forms-validation
 
+@Pipe({
+  standalone: true,
+  name: 'capitalize',
+})
+export class CapitalizePipe implements PipeTransform {
+  transform(value: string): string {
+    return value.length === 0 ? "" : `${value[0].toUpperCase() + value.slice(1).toLowerCase()}`;
+  }
+}
+
 @Component({
     selector: 'todo',
     standalone: true,
-    imports: [FormsModule],
+    imports: [FormsModule, CapitalizePipe],
     template: `
     <ol>
         @for (entry of listservice.getList(); track entry) {
-            <li>{{ entry }}<button (click)="removeEntry(entry)">-</button></li>
+            <li>{{ entry | capitalize }}<button (click)="removeEntry(entry)">-</button></li>
         }
     </ol>
     <input id="newentry" type="text" [(ngModel)]="newentry" />
