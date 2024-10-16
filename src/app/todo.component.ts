@@ -21,14 +21,20 @@ export class CapitalizePipe implements PipeTransform {
     selector: 'todo',
     standalone: true,
     imports: [FormsModule, CapitalizePipe],
+    styles: `
+    li { height: 24px; }
+    button { float: right; }
+    `,
     template: `
-    <ol>
-        @for (entry of listservice.getList(); track entry) {
-            <li>{{ entry | capitalize }}<button (click)="removeEntry(entry)">-</button></li>
-        }
-    </ol>
-    <input id="newentry" type="text" [(ngModel)]="newentry" />
-    <button (click)="addEntry()">+</button>
+    <div>
+        <ol>
+            @for (entry of listservice.getList(); track entry) {
+                <li>{{ entry | capitalize }}<button (click)="removeEntry(entry)">-</button></li>
+            }
+        </ol>
+        <input id="newentry" type="text" [(ngModel)]="newentry" />
+        <button style="width: 5vw;" (click)="addEntry()">+</button>
+    </div>
     `
 })
 export class TodoComponent {
@@ -59,7 +65,9 @@ export class TodoListService {
         localStorage.setItem("todo", JSON.stringify(this.list));
         if (this.pocketbase.pb.authStore.isValid) {
             const data = { "user": this.pocketbase.pb.authStore.model.id, "entries": this.list };
-            this.pocketbase.pb.collection("todo").update(this.id, data);
+            if (this.id !== "") {
+                this.pocketbase.pb.collection("todo").update(this.id, data);
+            }
         }
     }
     getId() { return this.id; }
@@ -72,8 +80,8 @@ export class TodoListService {
         if (this.pocketbase.pb.authStore.isValid) {
             this.pocketbase.pb.collection("todo").getFullList().then((data: [{"entries": [], "id": string}]) => {
                 if (data.length > 0) {
-                    this.setList(data[0].entries);
                     this.setId(data[0].id);
+                    this.setList(data[0].entries);
                 } else {
                     const data = { "user": this.pocketbase.pb.authStore.model.id, "entries": this.list };
                     console.log(this.pocketbase.pb.collection("todo").create(data));
