@@ -1,7 +1,7 @@
 <div>
     <button (click)="this.listservice.loadList()">Reload</button>
     <ol>
-        @for (entry of listservice.getList(); track entry) {
+        @for (entry of listservice.list; track entry) {
             <li>{{ entry | capitalize }}<button (click)="removeEntry(entry)">-</button></li>
         }
     </ol>
