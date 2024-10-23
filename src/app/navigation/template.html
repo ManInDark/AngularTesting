@@ -6,7 +6,7 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbar-collapsed-content">
+        <div class="collapse navbar-collapse align-items-center" id="navbar-collapsed-content">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 @for(link of links; track link.name) {
                 <li class="nav-item">
@@ -14,6 +14,9 @@
                 </li>
                 }
             </ul>
+            <span class="nav-item">
+                <user-component></user-component>
+            </span>
         </div>
     </div>
 </nav>

@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from "./navigation/component";
-import { UserComponent } from './user/component';
 
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [RouterOutlet, UserComponent, NavigationComponent],
+  imports: [RouterOutlet, NavigationComponent],
   template: `
-  <navigation [links]="links"></navigation>
-  <user-component></user-component>
+  <navigation class="mb-3" [links]="links"></navigation>
   <router-outlet></router-outlet>
   `
 })
