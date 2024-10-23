@@ -1,3 +1,15 @@
-<div><label for="username">Name:</label><input type="text" id="username" [(ngModel)]="username"></div>
-<div><label for="password">Password:</label><input type="password" id="password" [(ngModel)]="password"></div>
-<div><button (click)="pocketbase.login(username, password)">Login</button><button (click)="pocketbase.register(username, password)">Register</button><button (click)="pocketbase.logout()">Logout</button></div>
+<div class="d-grid gap-3">
+    <div class="input-group">
+        <label class="input-group-text" for="username">Name</label>
+        <input class="form-control" type="text" id="username" [(ngModel)]="username">
+    </div>
+    <div class="input-group">
+        <label class="input-group-text" for="password">Password</label>
+        <input class="form-control" type="password" id="password" [(ngModel)]="password">
+    </div>
+    <div class="btn-group">
+        <button class="btn btn-success" (click)="pocketbase.login(username, password)">Login</button>
+        <button class="btn btn-primary" (click)="pocketbase.register(username, password)">Register</button>
+        <button class="btn btn-danger" (click)="pocketbase.logout()">Logout</button>
+    </div>
+</div>

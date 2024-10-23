@@ -11,11 +11,7 @@ import { UserComponent } from './user/component';
   <navigation [links]="links"></navigation>
   <user-component></user-component>
   <router-outlet></router-outlet>
-  `,
-  styles: `
-  navigation {
-    display: inline
-  }`
+  `
 })
 export class RootComponent {
   links = [

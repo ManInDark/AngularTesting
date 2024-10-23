@@ -7,8 +7,7 @@ type Link = { name: string, path: string }
     selector: "navigation",
     standalone: true,
     imports: [RouterLink],
-    templateUrl: "template.html",
-    styleUrl: "style.css"
+    templateUrl: "template.html"
 })
 export class NavigationComponent {
     @Input() links: Array<Link> = []

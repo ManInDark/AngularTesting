@@ -1,5 +1,19 @@
-<nav>
-    @for(link of links; track link.name) {
-        <a routerLink="{{ link.path }}">{{ link.name }}</a>
-    }
+<nav class="navbar navbar-expand bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#">ToDo</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbar-collapsed-content" aria-controls="navbar-collapsed-content" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-collapsed-content">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @for(link of links; track link.name) {
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="{{ link.path }}">{{ link.name }}</a>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
 </nav>

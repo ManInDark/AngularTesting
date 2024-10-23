@@ -7,7 +7,6 @@ import { CapitalizePipe } from "./capitalize.pipe";
     selector: 'todo',
     standalone: true,
     imports: [FormsModule, CapitalizePipe],
-    styleUrl: "style.css",
     templateUrl: "template.html"
 })
 export class TodoComponent {
