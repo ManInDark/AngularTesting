@@ -1,7 +1,14 @@
 {
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:dev-22",
   "features": {
     "ghcr.io/devcontainers-extra/features/angular-cli:2": {}
   },
-  "postStartCommand": "make install setup build"
+  "postStartCommand": "make install setup build",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "Angular.ng-template"
+      ]
+    }
+  }
 }
